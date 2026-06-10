@@ -76,7 +76,7 @@
             <div class="col-span-1 md:col-span-2 lg:col-span-3 text-center py-24 border-[4px] border-on-background bg-surface-container-highest shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                 <span class="material-symbols-outlined text-6xl text-tertiary mb-4">database_off</span>
                 <h2 class="font-headline-md uppercase mb-2">NO_EVENTS_FOUND</h2>
-                <p class="font-label-mono text-tertiary">PLEASE RUN THE NEWSAPI FETCHER SCRIPT OR WAIT FOR CRON JOB.</p>
+                <p class="font-label-mono text-tertiary">NO_RECORDS_FOUND // AWAITING_SYSTEM_SYNC</p>
             </div>
         @endforelse
     </div>
