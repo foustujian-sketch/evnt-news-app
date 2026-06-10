@@ -68,6 +68,12 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Optional Password Update -->
+            <div class="flex flex-col gap-2 relative">
+                <label class="font-label-bold text-label-bold text-on-background uppercase bg-surface-container-lowest px-2 left-4 mb-4 w-fit">NEW_PASSWORD (OPTIONAL)</label>
+                <input name="password" class="w-full bg-surface-container-lowest border-border-width border-on-background p-4 font-body-lg text-body-lg text-on-background focus:ring-0 focus:outline-none focus:border-primary focus:shadow-[4px_4px_0px_0px_#106e00] transition-all" type="password" placeholder="Leave blank to keep current password" />
+            </div>
         </section>
 
         <!-- Bottom Action -->

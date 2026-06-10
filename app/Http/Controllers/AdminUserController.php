@@ -58,6 +58,7 @@ class AdminUserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'role' => 'required|in:admin,user',
+            'password' => 'nullable|string|min:8',
         ]);
 
         if ($user->role === 'admin' && $request->role !== 'admin') {
@@ -69,6 +70,11 @@ class AdminUserController extends Controller
         $oldRole = $user->role;
         $user->name = $request->name;
         $user->role = $request->role;
+        
+        if ($request->filled('password')) {
+            $user->password = \Illuminate\Support\Facades\Hash::make($request->password);
+        }
+        
         $user->save();
 
         if ($oldRole !== $request->role) {
