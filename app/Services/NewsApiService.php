@@ -15,7 +15,7 @@ class NewsApiService
      *
      * @return int The number of new events saved.
      */
-    public function fetchTechEvents(): int
+    public function fetchTechEvents(?string $tag = null): int
     {
         $apiKey = config('services.newsapi.key');
 
@@ -24,8 +24,12 @@ class NewsApiService
             return 0;
         }
 
-        // Keywords based on user requirements and recommendations
-        $query = '("hackathon" OR "tech conference" OR "developer event" OR "programming workshop" OR "advanced IoT" OR "cybersecurity summit" OR "AI expo")';
+        // Keywords based on user requirements or specific tag
+        if ($tag) {
+            $query = '("' . $tag . '")';
+        } else {
+            $query = '("hackathon" OR "tech conference" OR "developer event" OR "programming workshop" OR "advanced IoT" OR "cybersecurity summit" OR "AI expo")';
+        }
 
         $response = Http::get('https://newsapi.org/v2/everything', [
             'q' => $query,

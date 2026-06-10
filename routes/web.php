@@ -124,6 +124,12 @@ Route::prefix('admin')->middleware(['auth', App\Http\Middleware\EnsureUserIsAdmi
         \Illuminate\Support\Facades\Artisan::call('events:fetch');
         return back()->with('success', 'NEWS_API_SYNC_COMPLETED');
     })->name('admin.api-sync.fetch');
+    
+    Route::post('/api-sync/fetch-tag', function (\Illuminate\Http\Request $request) {
+        $request->validate(['tag' => 'required|string']);
+        \Illuminate\Support\Facades\Artisan::call('events:fetch', ['tag' => $request->tag]);
+        return back()->with('success', 'NEWS_API_SYNC_COMPLETED // TAG: ' . strtoupper($request->tag));
+    })->name('admin.api-sync.fetch-tag');
 });
 
 Route::middleware('auth')->group(function () {

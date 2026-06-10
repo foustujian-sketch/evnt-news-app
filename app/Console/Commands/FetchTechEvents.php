@@ -12,7 +12,7 @@ class FetchTechEvents extends Command
      *
      * @var string
      */
-    protected $signature = 'events:fetch';
+    protected $signature = 'events:fetch {tag?}';
 
     /**
      * The console command description.
@@ -26,9 +26,10 @@ class FetchTechEvents extends Command
      */
     public function handle(NewsApiService $newsApiService)
     {
-        $this->info('Starting NewsAPI Fetcher...');
+        $tag = $this->argument('tag');
+        $this->info($tag ? "Starting NewsAPI Fetcher for tag: {$tag}..." : 'Starting NewsAPI Fetcher...');
         
-        $count = $newsApiService->fetchTechEvents();
+        $count = $newsApiService->fetchTechEvents($tag);
 
         if ($count > 0) {
             $this->info("Successfully fetched and inserted {$count} new tech events!");

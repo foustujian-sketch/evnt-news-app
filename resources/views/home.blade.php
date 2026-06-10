@@ -77,6 +77,17 @@
                 <span class="material-symbols-outlined text-6xl text-tertiary mb-4">database_off</span>
                 <h2 class="font-headline-md uppercase mb-2">NO_EVENTS_FOUND</h2>
                 <p class="font-label-mono text-tertiary">NO_RECORDS_FOUND // AWAITING_SYSTEM_SYNC</p>
+                
+                @if(Auth::check() && Auth::user()->role === 'admin' && request()->has('tag'))
+                    <form action="{{ route('admin.api-sync.fetch-tag') }}" method="POST" class="mt-8 inline-block">
+                        @csrf
+                        <input type="hidden" name="tag" value="{{ request('tag') }}">
+                        <button type="submit" class="bg-primary text-on-primary border-[4px] border-on-background px-6 py-3 font-label-bold uppercase shadow-[4px_4px_0px_0px_#1a1c1c] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined">cloud_download</span>
+                            [ ADMIN ] FETCH_TAG: {{ strtoupper(request('tag')) }}
+                        </button>
+                    </form>
+                @endif
             </div>
         @endforelse
     </div>
