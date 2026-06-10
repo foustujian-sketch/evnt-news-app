@@ -1,0 +1,218 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>&gt;_SYS_ADMIN | API_SYNC</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Hard Block Shadows - Custom utility */
+        .shadow-block-black {
+            box-shadow: 8px 8px 0px 0px #1a1c1c;
+        }
+        .shadow-block-yellow {
+            box-shadow: 8px 8px 0px 0px #f6e600;
+        }
+        .shadow-block-green {
+            box-shadow: 8px 8px 0px 0px #39ff14;
+        }
+        
+        /* Interaction Utility */
+        .interactive-element {
+            transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+            cursor: pointer;
+        }
+        .interactive-element:active {
+            transform: translate(4px, 4px);
+            box-shadow: 4px 4px 0px 0px transparent !important;
+        }
+        
+        /* Terminal Cursor blink */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .terminal-cursor::after {
+            content: "█";
+            animation: blink 1s step-end infinite;
+            color: #39ff14;
+            margin-left: 4px;
+        }
+        .animate-blink {
+            animation: blink 1s step-end infinite;
+        }
+        
+        /* Custom scrollbar for logs */
+        .logs-container::-webkit-scrollbar {
+            width: 12px;
+        }
+        .logs-container::-webkit-scrollbar-track {
+            background: #1a1c1c;
+            border-left: 4px solid #39ff14;
+        }
+        .logs-container::-webkit-scrollbar-thumb {
+            background: #39ff14;
+            border: 4px solid #1a1c1c;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-fixed": "#1f1c00",
+                        "on-secondary-container": "#6b6400",
+                        "on-background": "#1a1c1c",
+                        "error": "#ba1a1a",
+                        "on-surface": "#1a1c1c",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-tertiary-container": "#616161",
+                        "primary-fixed": "#79ff5b",
+                        "secondary": "#676000",
+                        "on-primary-fixed-variant": "#095300",
+                        "on-primary-fixed": "#022100",
+                        "secondary-container": "#f3e300",
+                        "tertiary-container": "#dddddd",
+                        "tertiary": "#5e5e5e",
+                        "outline-variant": "#baccb0",
+                        "surface-container-low": "#f3f3f4",
+                        "on-secondary-fixed-variant": "#4d4800",
+                        "on-surface-variant": "#3c4b35",
+                        "outline": "#6b7c63",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#dadada",
+                        "surface-container-high": "#e8e8e8",
+                        "background": "#f9f9f9",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "inverse-primary": "#2ae500",
+                        "surface-variant": "#e2e2e2",
+                        "tertiary-fixed": "#e2e2e2",
+                        "secondary-fixed-dim": "#d7ca00",
+                        "on-primary": "#ffffff",
+                        "primary": "#106e00",
+                        "inverse-on-surface": "#f0f1f1",
+                        "surface": "#f9f9f9",
+                        "on-primary-container": "#107100",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#2f3131",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#2ae500",
+                        "primary-container": "#39ff14", /* Neon Green */
+                        "secondary-fixed": "#f6e600", /* Cyber Yellow */
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#eeeeee",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f9f9f9",
+                        "surface-tint": "#106e00"
+                    },
+                    fontFamily: {
+                        "headline-sm": ["Space Grotesk"],
+                        "label-bold": ["JetBrains Mono"],
+                        "headline-lg": ["Space Grotesk"],
+                        "body-lg": ["JetBrains Mono"],
+                        "body-md": ["JetBrains Mono"],
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-xl": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "headline-lg-mobile": ["Space Grotesk"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden selection:bg-primary-container selection:text-on-background min-h-screen flex flex-col md:flex-row">
+    
+    
+    <main class="flex-1 p-4 md:p-12 min-h-screen bg-surface bg-[radial-gradient(#e2e2e2_1px,transparent_1px)] [background-size:16px_16px]">
+        
+        <header class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6 border-b-[4px] border-on-background pb-8">
+            <div>
+                <h2 class="font-headline-xl text-headline-lg-mobile md:text-[80px] uppercase terminal-cursor leading-none tracking-tighter">API_SYNC // PIPELINE</h2>
+                <p class="font-label-mono text-label-mono text-tertiary mt-2">SYS_TIME: <span id="sys-time" class="">2026-06-09 22:21:06Z</span> | STATUS: OK</p>
+            </div>
+        </header>
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div class="bg-surface-container-lowest border-4 border-on-background p-6 shadow-block-black flex flex-col justify-between h-full">
+                <h3 class="font-label-bold text-label-bold uppercase text-tertiary mb-4">CONNECTION_STATUS</h3>
+                <div class="flex items-center gap-3">
+                    <div class="w-4 h-4 bg-primary-container border-4 border-on-background rounded-none"></div>
+                    <span class="font-headline-md text-headline-md text-primary-container drop-shadow-[2px_2px_0_#1a1c1c] tracking-wider uppercase">ONLINE</span>
+                </div>
+            </div>
+            
+            <div class="bg-surface-container-lowest border-4 border-on-background p-6 shadow-block-black flex flex-col justify-between h-full">
+                <h3 class="font-label-bold text-label-bold uppercase text-tertiary mb-4">LAST_SYNC_TIME</h3>
+                <div class="font-headline-md text-headline-md text-on-background border-none inline-block w-full font-bold">
+                    2026-06-10 05:00:12
+                </div>
+            </div>
+            
+            <div class="bg-surface-container-lowest border-4 border-on-background p-6 shadow-block-black flex flex-col justify-between h-full">
+                <h3 class="font-label-bold text-label-bold uppercase text-tertiary mb-4 flex justify-between">
+                    <span class="">API_QUOTA_REMAINING</span>
+                    <span class="material-symbols-outlined">data_usage</span>
+                </h3>
+                <div class="flex items-baseline gap-2">
+                    <span class="font-headline-md md:text-4xl font-bold text-on-background">9,842</span>
+                    <span class="font-body-md text-body-md text-on-surface-variant font-bold">/ 10,000</span>
+                </div>
+                <div class="w-full h-4 bg-surface-container-highest border-4 border-on-background mt-4 overflow-hidden">
+                    <div class="h-full bg-secondary-fixed w-[98.42%] border-r-4 border-on-background"></div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-12">
+            <button class="w-full bg-secondary-fixed border-[4px] border-on-background p-6 flex justify-center items-center gap-4 shadow-block-black interactive-element group">
+                <span class="material-symbols-outlined font-headline-md text-headline-md group-hover:rotate-180 transition-transform duration-500">refresh</span>
+                <span class="font-headline-md text-headline-md uppercase tracking-tight">[ FORCE_MANUAL_SYNC_NOW ]</span>
+            </button>
+        </section>
+        <section>
+            <div class="bg-on-background border-[4px] border-on-background shadow-block-yellow text-primary-container p-6 font-body-md text-body-md h-[400px] flex flex-col">
+                <div class="flex justify-between items-center border-b-[4px] border-primary-container pb-4 mb-4">
+                    <h2 class="font-headline-sm text-headline-sm uppercase tracking-widest flex items-center gap-2">
+                        <span class="material-symbols-outlined animate-blink">terminal</span>
+                        &gt;&gt; LIVE_PIPELINE_LOGS
+                    </h2>
+                    <span class="font-label-mono text-label-mono bg-primary-container text-on-primary-container px-2 py-1 uppercase font-bold text-black">Tailing...</span>
+                </div>
+                <div class="overflow-y-auto flex-1 logs-container font-label-mono text-label-mono leading-relaxed space-y-2 pr-4">
+                    <div class=""><span class="text-secondary-fixed font-bold">[ OK ]</span> 2026-06-10T05:00Z - CRON Triggered</div>
+                    <div class=""><span class="text-surface-container-highest font-bold">[ FETCH ]</span> GET https://newsapi.org/v2/everything -&gt; <span class="text-primary-container">200 OK</span></div>
+                    <div class=""><span class="text-surface-container-highest font-bold">[ PARSE ]</span> 15 new event records identified.</div>
+                    <div class=""><span class="text-primary-container font-bold">[ DB_WRITE ]</span> Inserted successfully into event_news table.</div>
+                    <div class="text-surface-container-highest opacity-50 mt-4">Waiting for next event... <span class="animate-blink inline-block w-2 h-4 bg-[#39ff14] align-middle"></span></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        // Simple script to update system time
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toISOString().replace('T', ' ').substring(0, 19) + 'Z';
+            document.getElementById('sys-time').textContent = timeString;
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+</body></html>

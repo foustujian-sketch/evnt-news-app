@@ -1,0 +1,57 @@
+<?php
+
+namespace App\Models;
+
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Database\Factories\UserFactory;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Attributes\Hidden;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
+#[Fillable(['name', 'email', 'password', 'role'])]
+#[Hidden(['password', 'remember_token'])]
+class User extends Authenticatable
+{
+    /** @use HasFactory<UserFactory> */
+    use HasFactory, Notifiable;
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
+    }
+
+    public function eventNews(): HasMany
+    {
+        return $this->hasMany(EventNews::class);
+    }
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function savedEvents(): BelongsToMany
+    {
+        return $this->belongsToMany(EventNews::class, 'saved_events', 'user_id', 'event_news_id')->withTimestamps();
+    }
+
+    public function getAvatarUrlAttribute(): string
+    {
+        $hash = md5(strtolower(trim($this->email)));
+        // set3 is robot avatars which fits the platform's theme
+        return "https://robohash.org/{$hash}?set=set3&bgset=bg1&size=200x200";
+    }
+}

@@ -1,0 +1,237 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>&gt;_SYS_ADMIN Control Panel</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Hard Block Shadows - Custom utility */
+        .shadow-block-black {
+            box-shadow: 8px 8px 0px 0px #1a1c1c;
+        }
+        .shadow-block-yellow {
+            box-shadow: 8px 8px 0px 0px #f6e600;
+        }
+        .shadow-block-green {
+            box-shadow: 8px 8px 0px 0px #39ff14;
+        }
+        
+        /* Interaction Utility */
+        .interactive-element {
+            transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+        }
+        .interactive-element:active {
+            transform: translate(4px, 4px);
+            box-shadow: 4px 4px 0px 0px transparent !important; /* Forces shadow removal on click to simulate pressing */
+        }
+        
+        /* Terminal Cursor blink */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .terminal-cursor::after {
+            content: "█";
+            animation: blink 1s step-end infinite;
+            color: #39ff14; /* Primary container / neon green */
+            margin-left: 4px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#1f1c00",
+                        "on-secondary-container": "#6b6400",
+                        "on-background": "#1a1c1c",
+                        "error": "#ba1a1a",
+                        "on-surface": "#1a1c1c",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-tertiary-container": "#616161",
+                        "primary-fixed": "#79ff5b",
+                        "secondary": "#676000",
+                        "on-primary-fixed-variant": "#095300",
+                        "on-primary-fixed": "#022100",
+                        "secondary-container": "#f3e300",
+                        "tertiary-container": "#dddddd",
+                        "tertiary": "#5e5e5e",
+                        "outline-variant": "#baccb0",
+                        "surface-container-low": "#f3f3f4",
+                        "on-secondary-fixed-variant": "#4d4800",
+                        "on-surface-variant": "#3c4b35",
+                        "outline": "#6b7c63",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#dadada",
+                        "surface-container-high": "#e8e8e8",
+                        "background": "#f9f9f9",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "inverse-primary": "#2ae500",
+                        "surface-variant": "#e2e2e2",
+                        "tertiary-fixed": "#e2e2e2",
+                        "secondary-fixed-dim": "#d7ca00",
+                        "on-primary": "#ffffff",
+                        "primary": "#106e00",
+                        "inverse-on-surface": "#f0f1f1",
+                        "surface": "#f9f9f9",
+                        "on-primary-container": "#107100",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#2f3131",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#2ae500",
+                        "primary-container": "#39ff14", /* Neon Green */
+                        "secondary-fixed": "#f6e600", /* Cyber Yellow */
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#eeeeee",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f9f9f9",
+                        "surface-tint": "#106e00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "container-max": "1440px",
+                        "border-width": "4px",
+                        "shadow-offset": "8px",
+                        "margin-desktop": "48px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Space Grotesk"],
+                        "label-bold": ["JetBrains Mono"],
+                        "headline-lg": ["Space Grotesk"],
+                        "body-lg": ["JetBrains Mono"],
+                        "body-md": ["JetBrains Mono"],
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-xl": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "headline-lg-mobile": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["24px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "label-bold": ["14px", { "lineHeight": "1.0", "fontWeight": "700" }],
+                        "headline-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-mono": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "headline-xl": ["80px", { "lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "headline-md": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["36px", { "lineHeight": "1.1", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden selection:bg-primary-container selection:text-on-background min-h-screen flex flex-col md:flex-row">
+<!-- JSON: SideNavBar (Semantic Map: DASHBOARD active) -->
+
+<!-- Mobile Navigation Trigger (Hidden on Desktop) -->
+<div class="md:hidden bg-on-background p-4 border-b-[4px] border-on-surface flex justify-between items-center sticky top-0 z-50">
+<h1 class="font-headline-sm text-headline-sm text-primary-container tracking-tighter uppercase terminal-cursor">&gt;_SYS_ADMIN</h1>
+<button class="text-primary-container">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<!-- Main Content Area -->
+<main class="flex-1 p-margin-mobile md:p-margin-desktop bg-background min-h-screen">
+<!-- Header Area -->
+<header class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6 border-b-[4px] border-on-background pb-8">
+<div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase terminal-cursor">OVERVIEW_</h2>
+<p class="font-label-mono text-label-mono text-tertiary mt-2">SYS_TIME: <span class="" id="sys-time">2026-06-09 22:21:01</span> | STATUS: OK</p>
+</div>
+<button class="bg-primary-container text-on-background border-[4px] border-on-background px-6 py-4 font-label-bold text-label-bold uppercase shadow-block-black interactive-element flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_box</span>
+                [ + NEW_RECORD ]
+            </button>
+</header>
+<!-- Quick Stats (Bento Grid) -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-12">
+<!-- Stat Box 1 -->
+<div class="bg-surface border-[4px] border-on-background p-6 shadow-block-black interactive-element flex flex-col justify-between min-h-[160px]">
+<h3 class="font-label-bold text-label-bold uppercase text-tertiary">TOTAL_EVENTS</h3>
+<p class="font-headline-xl text-headline-xl text-on-background">1,024</p>
+</div>
+<!-- Stat Box 2 (Yellow) -->
+<div class="bg-secondary-fixed border-[4px] border-on-background p-6 shadow-block-black interactive-element flex flex-col justify-between min-h-[160px]">
+<h3 class="font-label-bold text-label-bold uppercase text-on-secondary-fixed">ACTIVE_USERS</h3>
+<p class="font-headline-xl text-headline-xl text-on-secondary-fixed">48.2K</p>
+</div>
+<!-- Stat Box 3 (Black) -->
+<div class="bg-on-background border-[4px] border-on-background p-6 shadow-block-green interactive-element flex flex-col justify-between min-h-[160px]">
+<h3 class="font-label-bold text-label-bold uppercase text-primary-container">API_SYNC_STATUS</h3>
+<div class="flex items-center gap-2 text-primary-container mt-auto">
+<span class="material-symbols-outlined animate-spin" style="font-variation-settings: 'FILL' 1;">sync</span>
+<p class="font-headline-md text-headline-md">SYNCING...</p>
+</div>
+</div>
+</section>
+<!-- Database Table Section -->
+<section class="mb-12">
+<h3 class="font-headline-md text-headline-md uppercase mb-6 terminal-cursor">RECENT_LOGS</h3>
+<div class="overflow-x-auto border-[4px] border-on-background shadow-block-black bg-surface mb-6">
+<table class="w-full text-left font-body-md whitespace-nowrap">
+<thead class="bg-surface-container-highest border-b-[4px] border-on-background font-label-bold text-label-bold uppercase">
+<tr>
+<th class="p-4 border-r-[4px] border-on-background">ID</th>
+<th class="p-4 border-r-[4px] border-on-background">DATA_SNIPPET</th>
+<th class="p-4 border-r-[4px] border-on-background">AUTHOR/SOURCE</th>
+<th class="p-4">DATE</th>
+</tr>
+</thead>
+<tbody class="font-label-mono text-label-mono divide-y-[4px] divide-on-background">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="p-4 border-r-[4px] border-on-background font-bold text-primary">#EVT-9092</td>
+<td class="p-4 border-r-[4px] border-on-background"><code class="bg-surface-container-highest px-2 py-1 border border-on-background">{"type":"conference", "status":"live"}</code></td>
+<td class="p-4 border-r-[4px] border-on-background">SYS_ADMIN_01</td>
+<td class="p-4">2024-10-24 14:02:11</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="p-4 border-r-[4px] border-on-background font-bold text-primary">#USR-881A</td>
+<td class="p-4 border-r-[4px] border-on-background"><code class="bg-surface-container-highest px-2 py-1 border border-on-background">AUTH_TOKEN_RENEWED</code></td>
+<td class="p-4 border-r-[4px] border-on-background">AUTO_DAEMON</td>
+<td class="p-4">2024-10-24 13:55:00</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="p-4 border-r-[4px] border-on-background font-bold text-primary">#API-SYNC-4</td>
+<td class="p-4 border-r-[4px] border-on-background"><code class="bg-surface-container-highest px-2 py-1 border border-on-background">fetch("https://news.api/v2") -&gt; 200 OK</code></td>
+<td class="p-4 border-r-[4px] border-on-background">CRON_JOB_03</td>
+<td class="p-4">2024-10-24 13:00:01</td>
+</tr>
+</tbody>
+</table>
+</div>
+<button class="w-full bg-surface text-on-background border-[4px] border-on-background py-4 font-label-bold text-label-bold uppercase shadow-block-black hover:bg-surface-container-high transition-colors interactive-element flex items-center justify-center">
+    [ LOAD_MORE_DATA ]
+</button>
+</section>
+</main>
+<script>
+        // Simple script to update system time
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toISOString().replace('T', ' ').substring(0, 19);
+            document.getElementById('sys-time').textContent = timeString;
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+</body></html>

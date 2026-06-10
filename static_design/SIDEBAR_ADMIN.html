@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Neo-Brutalist Sidebar Navigation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#eeeeee",
+                        "on-secondary-fixed": "#1f1c00",
+                        "on-primary-fixed-variant": "#095300",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-primary-fixed": "#022100",
+                        "surface-tint": "#106e00",
+                        "outline": "#6b7c63",
+                        "background": "#f9f9f9",
+                        "on-secondary-container": "#6b6400",
+                        "tertiary-fixed": "#e2e2e2",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#79ff5b",
+                        "on-surface": "#1a1c1c",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "on-surface-variant": "#3c4b35",
+                        "inverse-on-surface": "#f0f1f1",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#dadada",
+                        "primary": "#106e00",
+                        "surface-bright": "#f9f9f9",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "secondary-fixed": "#f6e600",
+                        "primary-fixed-dim": "#2ae500",
+                        "inverse-primary": "#2ae500",
+                        "inverse-surface": "#2f3131",
+                        "error": "#ba1a1a",
+                        "tertiary": "#5e5e5e",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#107100",
+                        "outline-variant": "#baccb0",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "secondary-container": "#f3e300",
+                        "primary-container": "#39ff14",
+                        "secondary-fixed-dim": "#d7ca00",
+                        "surface-container-low": "#f3f3f4",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#616161",
+                        "tertiary-container": "#dddddd",
+                        "surface-variant": "#e2e2e2",
+                        "secondary": "#676000",
+                        "on-secondary-fixed-variant": "#4d4800",
+                        "on-background": "#1a1c1c",
+                        "surface-container-high": "#e8e8e8",
+                        "error-container": "#ffdad6",
+                        "surface": "#f9f9f9"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "margin-desktop": "48px",
+                        "container-max": "1440px",
+                        "border-width": "4px",
+                        "shadow-offset": "8px"
+                    },
+                    fontFamily: {
+                        "headline-sm": ["Space Grotesk"],
+                        "headline-lg-mobile": ["Space Grotesk"],
+                        "body-lg": ["JetBrains Mono"],
+                        "headline-lg": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "body-md": ["JetBrains Mono"],
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-xl": ["Space Grotesk"],
+                        "label-bold": ["JetBrains Mono"]
+                    },
+                    fontSize: {
+                        "headline-sm": ["24px", { lineHeight: "1.2", fontWeight: "700" }],
+                        "headline-lg-mobile": ["36px", { lineHeight: "1.1", fontWeight: "700" }],
+                        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "headline-lg": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "headline-md": ["32px", { lineHeight: "1.2", fontWeight: "700" }],
+                        "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "label-mono": ["12px", { lineHeight: "1.0", fontWeight: "500" }],
+                        "headline-xl": ["80px", { lineHeight: "1.0", letterSpacing: "-0.04em", fontWeight: "700" }],
+                        "label-bold": ["14px", { lineHeight: "1.0", fontWeight: "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .neo-shadow { box-shadow: 8px 8px 0px 0px #000000; }
+        .neo-shadow-green { box-shadow: 8px 8px 0px 0px #39FF14; }
+        
+        .neo-interact:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 8px 8px 0px 0px #000000;
+        }
+        .neo-interact:active {
+            transform: translate(4px, 4px) !important;
+            box-shadow: 0px 0px 0px 0px #000000 !important;
+        }
+
+        .neo-active {
+            transform: translate(4px, 4px);
+            box-shadow: 8px 8px 0px 0px #000000;
+        }
+        .neo-active:active {
+            transform: translate(8px, 8px);
+            box-shadow: 4px 4px 0px 0px #000000;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .cursor-blink {
+            animation: blink 1s step-end infinite;
+        }
+    </style>
+</head>
+<body class="h-screen flex m-0 p-0 overflow-hidden font-body-md text-on-background bg-surface">
+<!-- Sidebar Container -->
+<aside class="w-[260px] h-full bg-surface-container-lowest border-r-4 border-on-background flex flex-col justify-between shadow-[8px_0px_0px_0px_#000000] z-10 relative">
+<!-- Top Brand Header -->
+<div class="p-gutter pb-0">
+<div class="border-4 border-on-background bg-surface-container-lowest p-4 neo-shadow-green mb-8">
+<h1 class="font-headline-md text-headline-md text-on-background uppercase break-all leading-none mb-2">
+                    &gt;_SYS_<br/>ADMIN
+                </h1>
+<p class="font-label-mono text-label-mono text-on-surface-variant uppercase flex items-center">
+                    ROOT_ACCESS_GRANTED<span class="inline-block w-2 h-3 bg-on-background ml-1 cursor-blink"></span>
+</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 px-gutter overflow-y-auto pt-4 space-y-4">
+<a class="flex items-center p-3 font-label-bold text-label-bold uppercase text-on-surface-variant border-4 border-transparent hover:bg-surface-container-highest hover:text-on-background hover:border-on-background neo-interact transition-transform block" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+                [ DASHBOARD ]
+            </a>
+<a class="flex items-center p-3 font-label-bold text-label-bold uppercase text-on-surface-variant border-4 border-transparent hover:bg-surface-container-highest hover:text-on-background hover:border-on-background neo-interact transition-transform block" href="#">
+<span class="material-symbols-outlined mr-3">event</span>
+                MANAGE_EVENTS
+            </a>
+<a class="flex items-center p-3 font-label-bold text-label-bold uppercase text-on-surface-variant border-4 border-transparent hover:bg-surface-container-highest hover:text-on-background hover:border-on-background neo-interact transition-transform block" href="#">
+<span class="material-symbols-outlined mr-3">group</span>
+                USER_DATABASE
+            </a>
+<a class="flex items-center p-3 font-label-bold text-label-bold uppercase text-on-surface-variant border-4 border-transparent hover:bg-surface-container-highest hover:text-on-background hover:border-on-background neo-interact transition-transform block" href="#">
+<span class="material-symbols-outlined mr-3">gavel</span>
+                MODERATE_COMMENTS
+            </a>
+<!-- Active State -->
+<a class="flex items-center p-3 font-label-bold text-label-bold uppercase bg-primary-container text-on-background border-4 border-on-background neo-active transition-transform block mb-4" href="#">
+<span class="material-symbols-outlined mr-3" style="font-variation-settings: 'FILL' 1;">sync</span>
+                NEWS_API_SYNC
+            </a>
+</nav>
+<!-- Footer Action -->
+<div class="border-t-4 border-on-background p-gutter bg-surface-container-lowest">
+<button class="w-full flex items-center justify-center p-4 font-label-bold text-label-bold uppercase bg-surface-container-lowest text-on-background border-4 border-on-background hover:bg-error hover:text-on-error neo-interact transition-all group">
+<span class="material-symbols-outlined mr-2 group-hover:text-on-error">logout</span>
+                END_SESSION
+            </button>
+</div>
+</aside>
+<!-- Main Content Canvas Placeholder (To show context) -->
+</body></html>
