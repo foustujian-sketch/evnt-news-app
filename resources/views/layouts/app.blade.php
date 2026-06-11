@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', '>&lowbar;EVNT | Discover Global Tech Events, Hackathons, and Developer Conferences')</title>
+    <title>@yield('title', '>_EVNT | Global Tech Events & Hackathons')</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231a1c1c'/%3E%3Ctext y='70' x='15' fill='%2339ff14' font-family='monospace' font-size='60' font-weight='bold'%3E%3E_%3C/text%3E%3C/svg%3E">
@@ -17,14 +17,14 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:title" content="@yield('title', '>&lowbar;EVNT | Discover Global Tech Events, Hackathons, and Developer Conferences')">
+    <meta property="og:title" content="@yield('title', '>_EVNT | Global Tech Events & Hackathons')">
     <meta property="og:description" content="@yield('meta_description', 'Discover the best global tech events, coding hackathons, developer conferences, open source summits, and startup networking opportunities worldwide.')">
     <meta property="og:image" content="@yield('meta_image', 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200&h=630')">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ url()->current() }}">
-    <meta property="twitter:title" content="@yield('title', '>&lowbar;EVNT | Discover Global Tech Events, Hackathons, and Developer Conferences')">
+    <meta property="twitter:title" content="@yield('title', '>_EVNT | Global Tech Events & Hackathons')">
     <meta property="twitter:description" content="@yield('meta_description', 'Discover the best global tech events, coding hackathons, developer conferences, open source summits, and startup networking opportunities worldwide.')">
     <meta property="twitter:image" content="@yield('meta_image', 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200&h=630')">
 
