@@ -6,6 +6,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', '>&lowbar;EVNT | Discover Global Tech Events, Hackathons, and Developer Conferences')</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231a1c1c'/%3E%3Ctext y='70' x='15' fill='%2339ff14' font-family='monospace' font-size='60' font-weight='bold'%3E%3E_%3C/text%3E%3C/svg%3E">
+
     <!-- SEO Meta Tags -->
     <meta name="description" content="@yield('meta_description', 'Discover the best global tech events, coding hackathons, developer conferences, open source summits, and startup networking opportunities worldwide.')">
     <meta name="keywords" content="Tech Events, Hackathons, Developer Conferences, Tech News, Programming Workshops">
