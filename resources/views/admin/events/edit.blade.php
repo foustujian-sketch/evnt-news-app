@@ -103,6 +103,26 @@
                 </div>
             </div>
 
+            <!-- Input: AUTHOR_NAME -->
+            <div class="flex flex-col gap-2">
+                <label class="font-label-bold text-label-bold uppercase flex items-center gap-2">
+                    AUTHOR_NAME
+                </label>
+                <div class="relative">
+                    <input name="author_name" class="w-full bg-surface-container-lowest border-[4px] border-on-background p-4 font-body-md text-body-md shadow-[4px_4px_0px_0px_#1a1c1c] focus:outline-none focus:border-primary focus:shadow-[4px_4px_0px_0px_#39ff14] transition-all" type="text" value="{{ old('author_name', $event->author_name) }}" placeholder="[ OPTIONAL ]" />
+                </div>
+            </div>
+
+            <!-- Input: SOURCE_URL -->
+            <div class="flex flex-col gap-2">
+                <label class="font-label-bold text-label-bold uppercase flex items-center gap-2">
+                    SOURCE_URL
+                </label>
+                <div class="relative">
+                    <input name="source_url" class="w-full bg-surface-container-lowest border-[4px] border-on-background p-4 font-body-md text-body-md shadow-[4px_4px_0px_0px_#1a1c1c] focus:outline-none focus:border-primary focus:shadow-[4px_4px_0px_0px_#39ff14] transition-all" type="url" value="{{ old('source_url', $event->source_url) }}" placeholder="[ OPTIONAL ]" />
+                </div>
+            </div>
+
             <!-- Input: PUBLISH_DATE -->
             <div class="flex flex-col gap-2">
                 <label class="font-label-bold text-label-bold uppercase flex items-center gap-2">

@@ -45,11 +45,13 @@ class AdminEventController extends Controller
             'image_path' => 'nullable|url',
             'content' => 'required|string',
             'publish_date' => 'required|date',
+            'author_name' => 'nullable|string|max:255',
+            'source_url' => 'nullable|url|max:500',
         ]);
 
         $validated['slug'] = Str::slug($validated['title']) . '-' . uniqid();
         $validated['user_id'] = Auth::id() ?? 1;
-        $validated['author_name'] = Auth::user()->name ?? 'SYS_ADMIN';
+        $validated['author_name'] = $validated['author_name'] ?? (Auth::user()->name ?? 'SYS_ADMIN');
         
         EventNews::create($validated);
 
@@ -85,6 +87,8 @@ class AdminEventController extends Controller
             'image_path' => 'nullable|url',
             'content' => 'required|string',
             'publish_date' => 'required|date',
+            'author_name' => 'nullable|string|max:255',
+            'source_url' => 'nullable|url|max:500',
         ]);
 
         if ($event->title !== $validated['title']) {

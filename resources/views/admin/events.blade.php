@@ -121,6 +121,22 @@
                     METADATA
                     <span class="material-symbols-outlined">settings_ethernet</span>
                 </h2>
+                <!-- AUTHOR -->
+                <div class="flex flex-col gap-2">
+                    <label class="font-label-bold text-label-bold uppercase text-on-background flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[16px]">person</span>
+                        AUTHOR_NAME
+                    </label>
+                    <input name="author_name" value="{{ old('author_name') }}" class="w-full border-[4px] border-on-background p-3 font-label-mono text-body-md text-on-background bg-surface-container-lowest focus:outline-none focus:shadow-[8px_8px_0px_0px_#39ff14] focus:-translate-y-1 focus:-translate-x-1 transition-all" placeholder="[ OPTIONAL ]" type="text">
+                </div>
+                <!-- SOURCE URL -->
+                <div class="flex flex-col gap-2">
+                    <label class="font-label-bold text-label-bold uppercase text-on-background flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[16px]">link</span>
+                        SOURCE_URL
+                    </label>
+                    <input name="source_url" value="{{ old('source_url') }}" class="w-full border-[4px] border-on-background p-3 font-label-mono text-body-md text-on-background bg-surface-container-lowest focus:outline-none focus:shadow-[8px_8px_0px_0px_#39ff14] focus:-translate-y-1 focus:-translate-x-1 transition-all" placeholder="[ OPTIONAL ]" type="url">
+                </div>
                 <!-- PUBLISH DATE -->
                 <div class="flex flex-col gap-2">
                     <label class="font-label-bold text-label-bold uppercase text-on-background flex items-center gap-2">
