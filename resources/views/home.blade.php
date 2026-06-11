@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Hero Section -->
-<section class="w-screen relative left-1/2 -translate-x-1/2 border-b-[4px] border-on-background overflow-hidden bg-surface-container-lowest px-6 md:px-12 lg:px-24 mb-16 border-t-[4px] -mt-8 md:-mt-12">
+<section class="w-screen relative left-1/2 -translate-x-1/2 border-b-[4px] border-on-background overflow-hidden bg-surface-container-lowest px-6 md:px-12 lg:px-24 mb-16 border-t-[4px] -mt-8 md:-mt-12 min-h-[calc(100vh-120px)] flex flex-col justify-center">
     <!-- Abstract Grid Background Pattern -->
     <div class="absolute inset-0 opacity-10 pointer-events-none animate-grid-left" style="background-image: linear-gradient(#1a1c1c 2px, transparent 2px), linear-gradient(90deg, #1a1c1c 2px, transparent 2px); background-size: 40px 40px;"></div>
     <div class="py-6 md:py-8 relative z-10 flex flex-col justify-center items-start w-full max-w-container-max mx-auto">
