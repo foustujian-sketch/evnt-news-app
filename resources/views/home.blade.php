@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('title', ' | FEED')
-
 @section('content')
 <!-- Hero Section -->
 <section class="w-screen relative left-1/2 -translate-x-1/2 border-b-[4px] border-on-background overflow-hidden bg-surface-container-lowest px-6 md:px-12 lg:px-24 mb-16 border-t-[4px] -mt-8 md:-mt-12">
@@ -98,7 +96,6 @@
 
     @include('components.filter-sidebar')
 </section>
-@endsection
 
 <script>
     // Smooth scroll to feed on page load if hash is present (e.g., from pagination)
@@ -116,3 +113,4 @@
         }
     });
 </script>
+@endsection
