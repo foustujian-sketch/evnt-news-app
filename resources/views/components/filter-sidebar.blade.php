@@ -39,7 +39,7 @@
             <h3 class="font-label-bold text-xl mb-4 uppercase border-b-[3px] border-on-background pb-2 tracking-tighter">QUICK_TAGS</h3>
             <div class="flex flex-wrap gap-3">
                 @php 
-                    $tags = ['Hackathon', 'AI', 'WebDev', 'Cloud', 'Data', 'Security', 'Open Source', 'Startup', 'Workshop']; 
+                    $tags = ['Hackathon', 'AI', 'Web', 'Cloud', 'Data', 'Security', 'Open Source', 'Startup', 'Workshop']; 
                 @endphp
                 @foreach($tags as $t)
                     <label class="cursor-pointer">
