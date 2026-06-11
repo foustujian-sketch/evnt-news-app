@@ -13,6 +13,7 @@
     <meta name="description" content="@yield('meta_description', 'Discover the best global tech events, coding hackathons, developer conferences, open source summits, and startup networking opportunities worldwide.')">
     <meta name="keywords" content="Tech Events, Hackathons, Developer Conferences, Tech News, Programming Workshops">
     <meta name="author" content=">_EVNT Platform">
+    <link rel="canonical" href="{{ url()->current() }}">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
