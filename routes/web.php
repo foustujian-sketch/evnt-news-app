@@ -37,6 +37,11 @@ Route::get('/', function (\Illuminate\Http\Request $request) {
     return view('home', compact('events'));
 });
 
+Route::get('/sitemap.xml', function () {
+    $events = \App\Models\EventNews::orderBy('created_at', 'desc')->get();
+    return response()->view('sitemap', compact('events'))->header('Content-Type', 'text/xml');
+});
+
 Route::get('/dashboard', function () {
     $savedEvents = \Illuminate\Support\Facades\Auth::user()->savedEvents()->orderByPivot('created_at', 'desc')->get();
     return view('user.dashboard', compact('savedEvents'));

@@ -4,25 +4,25 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', '>&lowbar;EVNT') }} @yield('title')</title>
+    <title>@yield('title', '>&lowbar;EVNT | Discover Global Tech Events, Hackathons, and Developer Conferences')</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="@yield('meta_description', 'Discover the latest Tech & Developer Events, Hackathons, and Conferences worldwide.')">
+    <meta name="description" content="@yield('meta_description', 'Discover the best global tech events, coding hackathons, developer conferences, open source summits, and startup networking opportunities worldwide.')">
     <meta name="keywords" content="Tech Events, Hackathons, Developer Conferences, Tech News, Programming Workshops">
     <meta name="author" content=">_EVNT Platform">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:title" content="{{ config('app.name', '>&lowbar;EVNT') }} @yield('title')">
-    <meta property="og:description" content="@yield('meta_description', 'Discover the latest Tech & Developer Events, Hackathons, and Conferences worldwide.')">
+    <meta property="og:title" content="@yield('title', '>&lowbar;EVNT | Discover Global Tech Events, Hackathons, and Developer Conferences')">
+    <meta property="og:description" content="@yield('meta_description', 'Discover the best global tech events, coding hackathons, developer conferences, open source summits, and startup networking opportunities worldwide.')">
     <meta property="og:image" content="@yield('meta_image', 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200&h=630')">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ url()->current() }}">
-    <meta property="twitter:title" content="{{ config('app.name', '>&lowbar;EVNT') }} @yield('title')">
-    <meta property="twitter:description" content="@yield('meta_description', 'Discover the latest Tech & Developer Events, Hackathons, and Conferences worldwide.')">
+    <meta property="twitter:title" content="@yield('title', '>&lowbar;EVNT | Discover Global Tech Events, Hackathons, and Developer Conferences')">
+    <meta property="twitter:description" content="@yield('meta_description', 'Discover the best global tech events, coding hackathons, developer conferences, open source summits, and startup networking opportunities worldwide.')">
     <meta property="twitter:image" content="@yield('meta_image', 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200&h=630')">
 
     <!-- Google Fonts -->
