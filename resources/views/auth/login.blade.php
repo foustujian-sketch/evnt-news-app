@@ -124,13 +124,7 @@
             </div>
 
             <!-- Actions -->
-            <div class="flex flex-col md:flex-row items-center justify-between mt-4 gap-4">
-                @if (Route::has('password.request'))
-                    <a class="font-label-mono text-label-mono underline decoration-4 hover:text-primary-container transition-colors uppercase" href="{{ route('password.request') }}">
-                        FORGOT_ACCESS_KEY?
-                    </a>
-                @endif
-
+            <div class="flex flex-col md:flex-row items-center justify-end mt-4 gap-4">
                 <button class="brutal-btn w-full md:w-auto bg-primary-container text-on-background border-border-width border-on-background shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-label-bold text-label-bold uppercase py-4 px-8 flex items-center justify-center gap-2" type="submit">
                     EXECUTE_LOGIN
                     <span class="material-symbols-outlined text-sm">login</span>
