@@ -9,7 +9,7 @@ Route::get('/', function (\Illuminate\Http\Request $request) {
     if ($request->filled('q')) {
         $search = $request->query('q');
         $query->where(function($q) use ($search) {
-            $q->where('title', 'like', "%{$search}%");
+            $q->where('title', 'ilike', "%{$search}%");
             if (is_numeric($search)) {
                 $q->orWhere('id', $search);
             }
@@ -24,9 +24,9 @@ Route::get('/', function (\Illuminate\Http\Request $request) {
     if ($request->filled('tag')) {
         $tag = $request->query('tag');
         $query->where(function($q) use ($tag) {
-            $q->where('title', 'like', "%{$tag}%")
-              ->orWhere('content', 'like', "%{$tag}%")
-              ->orWhere('author_name', 'like', "%{$tag}%");
+            $q->where('title', 'ilike', "%{$tag}%")
+              ->orWhere('content', 'ilike', "%{$tag}%")
+              ->orWhere('author_name', 'ilike', "%{$tag}%");
         });
     }
 

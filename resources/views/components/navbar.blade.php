@@ -6,8 +6,8 @@
 
     <!-- Navigation Links (Hidden on Mobile) -->
     <div class="hidden md:flex gap-6 items-center shrink-0">
-        <a class="text-on-background font-label-bold text-label-bold border-[3px] border-transparent hover:border-on-background hover:bg-primary-container hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-translate-x-1 transition-all active:translate-x-0 active:translate-y-0 active:shadow-none py-1 px-3 uppercase" href="{{ url('/?q=hackathon#feed') }}">HACKATHONS</a>
-        <a class="text-on-background font-label-bold text-label-bold border-[3px] border-transparent hover:border-on-background hover:bg-primary-container hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-translate-x-1 transition-all active:translate-x-0 active:translate-y-0 active:shadow-none py-1 px-3 uppercase" href="{{ url('/?q=workshop#feed') }}">WORKSHOPS</a>
+        <a class="text-on-background font-label-bold text-label-bold border-[3px] border-transparent hover:border-on-background hover:bg-primary-container hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-translate-x-1 transition-all active:translate-x-0 active:translate-y-0 active:shadow-none py-1 px-3 uppercase" href="{{ url('/?tag=hackathon#feed') }}">HACKATHONS</a>
+        <a class="text-on-background font-label-bold text-label-bold border-[3px] border-transparent hover:border-on-background hover:bg-primary-container hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-translate-x-1 transition-all active:translate-x-0 active:translate-y-0 active:shadow-none py-1 px-3 uppercase" href="{{ url('/?tag=workshop#feed') }}">WORKSHOPS</a>
         
         @include('components.calendar-picker')
     </div>
